@@ -23,7 +23,8 @@ export class Tab1Page implements OnInit {
   long: any;
 
   contact: any;
-  phone: any;
+  from: any;
+  to: any;
   user: any;
   text: any;
   cord: any;
@@ -52,7 +53,6 @@ export class Tab1Page implements OnInit {
     this.geolocation.getCurrentPosition().then((data) => {
       this.lat = data.coords.latitude;
       this.long = data.coords.longitude;
-      // console.log(this.lat, this.long)
       this.cord = "https://www.google.com.ec/maps/@" + this.lat + "," + this.long + ",17z?hl=es"
      }).catch((error) => {
        alert(error);
@@ -93,10 +93,10 @@ export class Tab1Page implements OnInit {
 
   getMessages () {
     this.geoInformation();
-
     this.api.getConfig().subscribe(data => {
       this.user = data[0].name;
       this.text = data[0].message;
+      this.to = data[0].phone;
     })
 
     this.api.getContacts().subscribe(data => {
@@ -104,34 +104,23 @@ export class Tab1Page implements OnInit {
     })
 
     for ( let i in this.contacts) {
-      this.contact = this.contacts[i].name
-      this.phone = this.contacts[i].phone
+      this.from = this.contacts[i].phone
       this.message = {
-        user: this.user,
-        message: this.text,
-        name: this.contact,
-        phone: this.phone,
-        cords: this.cord
+        body: `${this.text}. \n esta es mi ubicacion ${this.cord}`,
+        from: this.from,
+        to: this.to
       }
+      this.api.newSMS(this.message).subscribe(response => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      })
       this.listMessages.push(this.message)
     }
     console.log("mesajes", this.listMessages);
 
   }
-
-  // getConfig(): void {
-  //   this.api.getConfig().subscribe(data => {
-  //     console.log(data[0]);
-  //     this.config = data[0];
-  //   })
-  // }
-
-  // getContacts(): void {
-  //   this.api.getContacts().subscribe(data => {
-  //     console.log(data);
-  //     this.contacts = data;
-  //   })  ..
-  // }
 
   goToInfo() {
     this.navCtrl.navigateForward( '/info' );

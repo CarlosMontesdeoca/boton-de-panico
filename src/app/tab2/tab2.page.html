@@ -21,14 +21,20 @@
   <div *ngIf="state">
     <form>
       <fieldset>
-        <div class="mb-3">
-          <label for="name" >Nombre</label>
-          <input type="text" class="form-control" id="name" required [(ngModel)]="contact.name" name="name" placeholder="Nombre del contacto">
-        </div>
-        <div class="mb-3">
-          <label for="phone">Teléfono</label>
-          <input class="form-control" id="phone" required [(ngModel)]="contact.phone" name="phone" placeholder="Telefono de contacto">
-        </div> 
+        <ion-item>
+          <div class="mb-3">
+            <label for="name" >Nombre</label>
+            <br/>
+            <input type="text" class="form-control" id="name" required [(ngModel)]="contact.name" name="name" placeholder="Nombre de usuario">
+          </div>
+        </ion-item>
+        <ion-item>
+          <div class="mb-3">
+            <label for="phone" >Telefono: </label>
+            <br/>
+            <span> +593</span><input type="number" class="form-control" id="phone" required [(ngModel)]="contact.phone" name="phone" placeholder="987654321">
+          </div>
+        </ion-item>
       </fieldset>
       <ion-button (click)="newContact()"> Cancelar </ion-button>
       <ion-button type="submit" (click)="saveContact()"> Guardar </ion-button>

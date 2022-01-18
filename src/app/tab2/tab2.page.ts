@@ -45,7 +45,7 @@ export class Tab2Page implements OnInit {
   saveContact(): void {
     const data = {
       name: this.contact.name,
-      phone: this.contact.phone
+      phone: `+593${this.contact.phone}`,
     };
 
     this.api.newContact(data).subscribe(response => {

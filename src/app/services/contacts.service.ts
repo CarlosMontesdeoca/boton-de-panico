@@ -47,4 +47,9 @@ export class ContactsService {
     let direction = `${url}config/`;
     return this.http.put(direction, data);
   }
+
+  newSMS(data): Observable <any> {
+    let direction = `${url}sms/`;
+    return this.http.post(direction, data);
+  }
 }
