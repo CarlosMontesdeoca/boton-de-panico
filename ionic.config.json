@@ -1,0 +1,7 @@
+{
+  "name": "boton-de-banico",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
