@@ -43,8 +43,8 @@ export class ContactsService {
     return this.http.post(direction, data);
   }
 
-  editConfig(id, data): Observable <any> {
-    let direction = `${url}config/${id}`;
+  editConfig(data): Observable <any> {
+    let direction = `${url}config/`;
     return this.http.put(direction, data);
   }
 }

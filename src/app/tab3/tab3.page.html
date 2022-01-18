@@ -13,23 +13,40 @@
         <ion-label position="fixed">{{config.name}}</ion-label>
       </ion-item>
       <ion-item>
+        <ion-label position="fixed">{{config.phone}}</ion-label>
+      </ion-item>
+      <ion-item>
         <p position="fixed">{{config.message}}</p>
       </ion-item>
   </div>
   <div *ngIf="state">
-    <form >
+    <form>
       <fieldset>
-        <div class="mb-3">
-          <label for="inputName" class="form-label">Nombre</label>
-          <input type="text" id="inputNameUser" class="form-control" value={{name}}>
-        </div>
-        <div class="mb-3">
-          <label for="inputMessage" class="form-label">Mensaje</label>
-          <input type="text" id="inputPhoneUser" class="form-control" value={{phone}}>
-        </div> 
+        <ion-item>
+          <div class="mb-3">
+            <label for="name" >Nombre</label>
+            <br/>
+            <input type="text" class="form-control" id="name" required [(ngModel)]="config.name" name="name" placeholder="Nombre de usuario">
+          </div>
+        </ion-item>
+        <ion-item>
+          <div class="mb-3">
+            <label for="phone" >Telefono: </label>
+            <br/>
+            <span> +593</span><input type="number" class="form-control" id="phone" required [(ngModel)]="config.phone" name="phone" placeholder="987654321">
+          </div>
+        </ion-item>
+        <ion-item>
+          <div class="mb-3">
+            <label for="message" >Mensaje: </label>
+            <br/>
+            <input type="message" class="form-control" id="message" required [(ngModel)]="config.message" name="message" placeholder="ayudame necesito ayuda">
+          </div>
+        </ion-item>
       </fieldset>
+      <ion-button (click)="newConfig()"> Cancelar </ion-button>
+      <ion-button type="submit" (click)="saveConfig()"> Guardar </ion-button>  
     </form>
-    <ion-button (click)="newConfig()"> Cancelar </ion-button>
-    <ion-button (click)="saveConfig()"> Guardar </ion-button>
+    
   </div>
 </ion-content>
