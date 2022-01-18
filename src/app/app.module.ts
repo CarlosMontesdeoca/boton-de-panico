@@ -8,8 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http'; // leer datos de la api rest
-// import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
-// import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { ContactsService } from '../app/services/contacts.service';
 
 @NgModule({
@@ -22,7 +22,7 @@ import { ContactsService } from '../app/services/contacts.service';
     HttpClientModule // module
   ],
   providers: [ 
-    // NativeGeocoder,
+    NativeGeocoder,
     Geolocation,
     ContactsService,    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy } 
