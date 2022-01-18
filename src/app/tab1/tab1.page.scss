@@ -1,0 +1,52 @@
+.fondo {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/images/fondo-metalico2.jpg');
+    background-size: cover;
+    padding: 20px;
+    padding: auto;
+    text-align: center;
+  }
+  
+.nav {
+    display: flex;
+}
+  
+.color {
+    color: white;
+    text-align: right;
+}
+
+.main_button {
+    height: 210px;
+    width:  210px;
+    background: linear-gradient(180deg, #f36d6d 0%, #b10909 100%);
+    margin: 15px;
+    border-radius: 100px;
+    box-shadow: 10px 5px 5px rgb(56, 56, 56);
+    color: #fff;
+    font-size: 34px;
+    
+}
+
+.border-button {
+    height: 230px;
+    width: 250px;
+    border-radius: 100%;
+    margin: 0 auto;
+    padding: 0 auto;
+    text-align: center;
+    background-color: rgb(189, 189, 189);
+}
+
+.circle-button{
+    border: #fff solid;
+    height: 190px;
+    width: 190px;
+    border-radius: 100%;
+    margin: 0 auto;
+    padding: auto; 
+    display: flex;
+    align-items: center; 
+    text-align: center;
+}

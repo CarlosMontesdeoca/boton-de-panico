@@ -1,17 +1,29 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+  <ion-toolbar  color="dark">
+      <ion-title>
+        Boton de panico
+      </ion-title> 
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="center">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div class="fondo">
+    <div class="border-button">
+      <button *ngFor="let alarma of alarmas" (click)="getMessages()" class="main_button">
+        <div class="circle-button">
+          {{ alarma.nombre }}
+        </div>
+      </button>
+    </div>
+
+    <ion-item>
+      <ion-label>Latitud</ion-label>
+      <ion-badge color="secondary">{{lat}}</ion-badge>
+      <ion-label>Longitud</ion-label>
+      <ion-badge color="tertiary">{{long}}</ion-badge>
+    </ion-item>
+    
+  </div>
+  
 </ion-content>

@@ -1,17 +1,39 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-title>
-      Tab 2
+      Lista de Contactos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<ion-content [fullscreen]="true" class="fondo">
+  <div *ngIf="!state">
+    <ion-button (click)="newContact()"> Nuevo Contacto </ion-button>
+    <div *ngFor="let contact of contacts">
+      <ion-item>
+        <ion-label position="fixed">{{contact.name}}</ion-label>
+        <br/>
+        <ion-label position="fixed">{{contact.phone}}</ion-label>
+        <ion-button type="button" (click)="deleteContact(contact._id)" >Eliminar</ion-button>
+      </ion-item>
+    </div>
+  </div>
+  <div *ngIf="state">
+    <form>
+      <fieldset>
+        <div class="mb-3">
+          <label for="name" >Nombre</label>
+          <input type="text" class="form-control" id="name" required [(ngModel)]="contact.name" name="name" placeholder="Nombre del contacto">
+        </div>
+        <div class="mb-3">
+          <label for="phone">Teléfono</label>
+          <input class="form-control" id="phone" required [(ngModel)]="contact.phone" name="phone" placeholder="Telefono de contacto">
+        </div> 
+      </fieldset>
+      <ion-button (click)="newContact()"> Cancelar </ion-button>
+      <ion-button type="submit" (click)="saveContact()"> Guardar </ion-button>
+    </form>
+    
+  </div>
+  
 </ion-content>
