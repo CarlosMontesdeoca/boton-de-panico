@@ -60,7 +60,19 @@ export class Tab1Page implements OnInit {
      return this.cord
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.api.getConfig().subscribe(data => {
+      console.log("datos",data[0]);
+      if ( !data[0] ){
+        const dt = {}
+        this.api.newConfig(dt).subscribe(response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        })
+      } 
+    })  
   }
 
   playAlarm (alarma: Alarma) {

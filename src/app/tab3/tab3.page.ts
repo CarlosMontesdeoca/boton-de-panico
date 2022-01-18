@@ -23,8 +23,18 @@ export class Tab3Page implements OnInit {
   
   ngOnInit(): void {
     this.api.getConfig().subscribe(data => {
-      console.log(data[0]);
-      this.config = data[0];
+      console.log("datos",data[0]);
+      if ( data[0] ){
+        this.config = data[0];
+      } else {
+        const dt = {}
+        this.api.newConfig(dt).subscribe(response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        })
+      } 
     })  
   }
 
