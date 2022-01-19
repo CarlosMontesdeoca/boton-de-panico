@@ -10,7 +10,7 @@
 
   <div class="fondo">
     <div class="border-button">
-      <button *ngFor="let alarma of alarmas" (click)="getMessages()" class="main_button">
+      <button *ngFor="let alarma of alarmas" (click)="playAlarm(alarma)" class="main_button">
         <div class="circle-button">
           {{ alarma.nombre }}
         </div>

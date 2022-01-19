@@ -37,7 +37,6 @@ export class Tab1Page implements OnInit {
 
   constructor(
     private api: ContactsService,
-    private navCtrl: NavController,
     private geolocation: Geolocation,
   ) {
     this.alarmas = ALARMAS.slice(0);
@@ -48,17 +47,6 @@ export class Tab1Page implements OnInit {
     maximumAge: 3600,
     enableHighAccuracy: true, 
   };
-
-  geoInformation() {
-    this.geolocation.getCurrentPosition().then((data) => {
-      this.lat = data.coords.latitude;
-      this.long = data.coords.longitude;
-      this.cord = "https://www.google.com.ec/maps/@" + this.lat + "," + this.long + ",17z?hl=es"
-     }).catch((error) => {
-       alert(error);
-     });
-     return this.cord
-  }
 
   ngOnInit(): void {
     this.api.getConfig().subscribe(data => {
@@ -75,20 +63,32 @@ export class Tab1Page implements OnInit {
     })  
   }
 
-  playAlarm (alarma: Alarma) {
+    async playAlarm (alarma: Alarma) {
 
-    let audio = new Audio();
+      let audio = new Audio();
 
-    audio.src = alarma.audio;
-    alarma.reproduciendo = true;
-    audio.load();
-    audio.play();
+      audio.src = alarma.audio;
+      alarma.reproduciendo = true;
+      audio.load();
+      audio.play();
 
-    setTimeout(() => {
-      alarma.reproduciendo = false;
-    }, alarma.duracion * 100000);
+      setTimeout(() => {
+        alarma.reproduciendo = false;
+      },
+    alarma.duracion * 100000);
+    const loc = await this.action();
+  }
 
-    // () => this.geoInformation()
+  geoInformation() {
+    this.playAlarm
+    this.geolocation.getCurrentPosition().then((data) => {
+      this.lat = data.coords.latitude;
+      this.long = data.coords.longitude;
+      this.cord = "https://www.google.com.ec/maps/@" + this.lat + "," + this.long + ",17z?hl=es"
+     }).catch((error) => {
+       alert(error);
+     });
+     return this.cord
   }
 
   getMessages () {
@@ -122,8 +122,10 @@ export class Tab1Page implements OnInit {
 
   }
 
-  goToInfo() {
-    this.navCtrl.navigateForward( '/info' );
+  action() {
+    this.geoInformation();
+    this.getMessages();
   }
+
 }
 
