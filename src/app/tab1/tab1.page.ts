@@ -96,7 +96,7 @@ export class Tab1Page implements OnInit {
     this.api.getConfig().subscribe(data => {
       this.user = data[0].name;
       this.text = data[0].message;
-      this.to = data[0].phone;
+      this.from = data[0].phone;
     })
 
     this.api.getContacts().subscribe(data => {
@@ -104,7 +104,7 @@ export class Tab1Page implements OnInit {
     })
 
     for ( let i in this.contacts) {
-      this.from = this.contacts[i].phone
+      this.to = this.contacts[i].phone
       this.message = {
         body: `${this.text}. \n esta es mi ubicacion ${this.cord}`,
         from: this.from,
