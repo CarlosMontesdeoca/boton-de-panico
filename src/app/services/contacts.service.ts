@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { ListContacts } from "../../interfaces/listcontacts.interface";
 import { Config } from 'src/interfaces/config.interface';
 
-const url = 'http://localhost:3000/api/';
+const url = 'https://server-panic-button.herokuapp.com/api/';
 
 @Injectable({
   providedIn: 'root'
